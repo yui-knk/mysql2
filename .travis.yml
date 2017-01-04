@@ -70,16 +70,12 @@ matrix:
     - rvm: 2.0.0
       env: DB=mysql55
       before_install:
-        - rm -rf /var/lib/mysql/debian-5.6.flag
+        - sudo rm -rf /var/lib/mysql/debian-*.flag
+        - sudo apt-get update
+        - sudo apt-get install -qq -y mysql-server-core-5.5 mysql-server-5.5 mysql-client-core-5.5 mysql-client-5.5
       addons:
         hosts:
           - mysql2gem.example.com
-        apt:
-          packages:
-          - mysql-server-core-5.5
-          - mysql-server-5.5
-          - mysql-client-core-5.5
-          - mysql-client-5.5
     - rvm: 2.0.0
       env: DB=mysql57
       addons:
